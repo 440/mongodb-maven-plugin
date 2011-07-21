@@ -1,0 +1,13 @@
+.idea
+*.ipr
+*.iws
+.metadata
+.project
+.classpath
+.DS_Store
+.metadata
+*.log
+*.iml
+*.swp
+target
+reports
