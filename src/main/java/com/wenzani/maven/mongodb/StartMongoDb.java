@@ -66,12 +66,15 @@ public class StartMongoDb extends AbstractMojo {
 
         } catch (IOException e) {
             getLog().error(ExceptionUtils.getFullStackTrace(e));
+        } catch (InterruptedException ex) {
+            getLog().error(ExceptionUtils.getFullStackTrace(ex));
         }
     }
 
-    private void chmodMongoD() throws IOException {
+    private void chmodMongoD() throws IOException, InterruptedException {
         String chmod = new StringBuilder("chmod +x ").append(getMongoD()).toString();
-        Runtime.getRuntime().exec(chmod);
+        Process process = Runtime.getRuntime().exec(chmod);
+        process.waitFor();
     }
 
     private String getMongoD() {
